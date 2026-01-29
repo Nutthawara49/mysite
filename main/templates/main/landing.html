@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amy Tripp | Personal Portfolio</title>
+    <!-- Google Fonts for Elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #fdfbfb;
+            --accent-soft: #ebedee;
+            --text-main: #2c3e50;
+            --text-sub: #7f8c8d;
+            --glass: rgba(255, 255, 255, 0.7);
+            --primary-gradient: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* --- Animated Background --- */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--primary-gradient);
+            overflow: hidden;
+        }
+
+        /* Moving Soft Gradients */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(235, 237, 238, 0.8) 0%, rgba(253, 251, 251, 0) 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: move 20s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { top: -10%; left: -10%; animation-delay: 0s; }
+        .blob-2 { bottom: -10%; right: -10%; background: radial-gradient(circle, rgba(220, 227, 250, 0.5) 0%, rgba(253, 251, 251, 0) 70%); animation-delay: -5s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(100px, 50px) scale(1.1); }
+        }
+
+        /* Drifting Stars Effect */
+        .stars {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #cbd5e0;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: drift var(--duration) infinite linear;
+        }
+
+        @keyframes drift {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100vh); }
+        }
+
+        /* --- Layout & Content --- */
+        header {
+            padding: 2rem 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            color: var(--text-main);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-sub);
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--text-main);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        .hero-card {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 4rem;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03);
+            text-align: center;
+            max-width: 700px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero-card p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--text-main);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            background: #000;
+        }
+
+        /* --- Social Footer --- */
+        footer {
+            position: absolute;
+            bottom: 2rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero-card { padding: 2.5rem 1.5rem; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container" id="bg">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <!-- Particles will be injected here by JS -->
+    </div>
+
+    <header>
+        <div class="logo">amytripp</div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#work">Insights</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-card">
+            <h1>Harmonizing the Stars <br> with the Soul.</h1>
+            <p>Bridging psychological insight and ancient wisdom to help you navigate life's transitions with clarity and purpose.</p>
+            <a href="mailto:hello@amytripp.com" class="cta-button">Book a Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 amytripp &bull; All Rights Reserved
+    </footer>
+
+    <script>
+        // Generate subtle drifting star particles
+        const container = document.getElementById('bg');
+        const starCount = 40;
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'stars';
+            
+            // Randomize position and animation
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            const duration = 15 + Math.random() * 30;
+            const delay = Math.random() * -20;
+
+            star.style.left = `${x}%`;
+            star.style.top = `${y}%`;
+            star.style.setProperty('--duration', `${duration}s`);
+            star.style.animationDelay = `${delay}s`;
+            
+            container.appendChild(star);
+        }
+    </script>
+</body>
+</html>
